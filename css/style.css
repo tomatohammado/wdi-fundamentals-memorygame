@@ -88,3 +88,8 @@ footer p {
   height:0;
   visibility: none;
 }
+
+.name {
+  color: #F15B31;
+  font-weight: 700;
+}
