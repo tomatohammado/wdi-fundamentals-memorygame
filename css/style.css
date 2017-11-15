@@ -1,5 +1,5 @@
 h1 {
-  color: #0D2C40;
+  /* color: #0D2C40; */
   font-family: "Raleway", sans-serif;
   font-size: 45px;
   font-weight: 400;
@@ -16,11 +16,13 @@ h2 {
 }
 
 a {
-  color: #F15B31;
+  /* color: #F15B31; */
+  color: #FFFFFF;
   font-family: "Raleway", sans-serif;
   font-size: 18px;
   font-weight: 600;
   letter-spacing: 1px;
+  padding: 0 20px;
   text-decoration: none;
 }
 
@@ -39,4 +41,19 @@ header {
   background-color: #F15B31;
   color: #FFFFFF;
   padding: 30px 20px;
+}
+
+nav {
+  background-color: #00A6B3;
+  color: #FFFFFF;
+  padding: 20px 0;
+}
+
+main {
+  margin: 35px auto;
+  width: 850px;
+}
+
+img {
+  margin: 40px 8px 0;
 }
