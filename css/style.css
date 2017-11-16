@@ -93,3 +93,7 @@ footer p {
   color: #F15B31;
   font-weight: 700;
 }
+
+a:hover {
+  border:2px solid #FFFFFF;
+}
