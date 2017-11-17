@@ -1,4 +1,7 @@
-h1 {
+* {
+  box-sizing: border-box;
+}
+  h1 {
   /* color: #0D2C40; */
   font-family: "Raleway", sans-serif;
   font-size: 45px;
@@ -95,5 +98,6 @@ footer p {
 }
 
 a:hover {
-  border:2px solid #FFFFFF;
+  /* border:2px solid #FFFFFF; */
+  outline:2px solid #FFFFFF;
 }
