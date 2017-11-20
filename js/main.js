@@ -8,6 +8,10 @@ var cardFour = "king"
 var cards = ["queen", "queen", "king", "king"]
 var cardsInPlay = []
 
+var flipCard = function (cardId) {
+  
+}
+
 var cardOne = cards[0]
 var cardTwo = cards[1]
 var cardThree = cards[2]
