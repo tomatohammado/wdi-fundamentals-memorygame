@@ -5,13 +5,9 @@ var cardsInPlay = []
 
 var flipCard = function (cardId) {
 
-  var cardOne = cards[0]
-  var cardTwo = cards[1]
-  var cardThree = cards[2]
-  var cardFour = cards[3]
-  
-  cardsInPlay.push(cardOne)
-  cardsInPlay.push(cardThree)
+  console.log("User flipped "+ cards[cardId])
+
+  cardsInPlay.push(cards[cardId])
   
   if (cardsInPlay.length === 2) {
     if (cardsInPlay[0] === cardsInPlay[1]) {
@@ -21,3 +17,6 @@ var flipCard = function (cardId) {
     }
   }
 }
+
+flipCard(0)
+flipCard(2)
