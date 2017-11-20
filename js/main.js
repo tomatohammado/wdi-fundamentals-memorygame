@@ -27,17 +27,17 @@ var cardsInPlay = []
 var checkForMatch = function () {
   if (cardsInPlay[0] === cardsInPlay[1]) {
     console.log('You found a match!')
-  } else if (cardsInPlay.length !== 2) {
-    console.log('You need two cards to compare.')
-  } else {
+  } else if (cardsInPlay.length === 2) {
     console.log('Sorry, try again.')
+  } else {
+    // console.log('You need exactly two cards to compare.')
   }
 }
 
 var flipCard = function (cardId) {
-  console.log('User flipped ' + cards[cardId])
+  console.log('User flipped ' + cards[cardId].rank)
 
-  cardsInPlay.push(cards[cardId])
+  cardsInPlay.push(cards[cardId].rank)
 
   checkForMatch()
 }
