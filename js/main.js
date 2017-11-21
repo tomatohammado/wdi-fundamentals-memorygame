@@ -43,7 +43,7 @@ var flipCard = function () {
     return
   }
   this.classList.add('flipped')
-  console.log('User flipped ' + cards[cardId].rank)
+  // console.log('User flipped ' + cards[cardId].rank)
   // console.log(cards[cardId].cardImage)
   // console.log(cards[cardId].suit)
 
@@ -85,12 +85,10 @@ var createBoard = function () {
 }
 
 document.querySelector('.reset-button').addEventListener('click', function () {
-  console.log(document.querySelectorAll('.flipped'))
-  for (var i = 0; i < cardsInPlay.length; i++) {
-    console.log(document.querySelectorAll('.flipped')[i])
-    document.querySelectorAll('.flipped')[i].classList.remove('flipped')
+  for (var i = 0; i < 4; i++) {
+    document.getElementById('game-board').removeChild(document.querySelector('#game-board img'))
   }
-
+  createBoard()
   cardsInPlay = []
 })
 
