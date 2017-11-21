@@ -34,7 +34,9 @@ var checkForMatch = function () {
   }
 }
 
-var flipCard = function (cardId) {
+var flipCard = function () {
+  var cardId = this.getAttribute('data-id')
+
   console.log('User flipped ' + cards[cardId].rank)
   // console.log(cards[cardId].cardImage)
   // console.log(cards[cardId].suit)
@@ -53,15 +55,17 @@ var createBoard = function () {
     // console.log('i:' + i)
     // console.log('#data-id: ' + cardElement.getAttribute('data-id'))
 
-    cardElement.addEventListener('click', function () {
+    // cardElement.addEventListener('click', function () {
       // console.log('i:' + i)
       // console.log('#data-id: ' + cardElement.getAttribute('data-id'))
       // console.log('this#data-id: ' + this.getAttribute('data-id'))
       // flipCard(i)
 
       // thank god for stackoverflow https://stackoverflow.com/questions/256754/how-to-pass-arguments-to-addeventlistener-listener-function.
-      flipCard(this.getAttribute('data-id'))
-    })
+      // flipCard(this.getAttribute('data-id'))
+    // })
+
+    cardElement.addEventListener('click', flipCard)
 
     document.getElementById('game-board').appendChild(cardElement)
   }
