@@ -59,7 +59,7 @@ main {
 }
 
 img {
-  margin: 40px 8px;
+  margin: 8px;
 }
 
 footer {
@@ -106,4 +106,19 @@ footer p {
 a:hover {
   /* border:2px solid #FFFFFF; */
   outline:2px solid #FFFFFF;
+}
+
+.game {
+  margin: 40px 0;
+}
+
+.reset-button {
+  display: inline-block;
+  background-color: #FF3E03;
+  border-radius: 6px;
+  padding: 10px;
+  font-family: "Ralway", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #FFF;
 }

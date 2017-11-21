@@ -73,7 +73,9 @@ var createBoard = function () {
 
     cardElement.addEventListener('click', flipCard)
 
-    document.getElementById('game-board').appendChild(cardElement)
+    // document.getElementById('game-board').appendChild(cardElement)
+    // document.getElementById('game-board').insertBefore(cardElement, document.querySelector('.reset-button'))
+    document.getElementById('game-board').insertBefore(cardElement, document.querySelector('#game-board div'))
   }
 }
 
