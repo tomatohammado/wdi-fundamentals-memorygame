@@ -33,6 +33,10 @@ var checkForMatch = function () {
 }
 
 var flipCard = function () {
+  if (cardsInPlay.length >= 2) {
+    return
+  }
+
   var cardId = this.getAttribute('data-id')
 
   console.log('User flipped ' + cards[cardId].rank)
