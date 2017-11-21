@@ -27,10 +27,10 @@ var cardsInPlay = []
 var checkForMatch = function () {
   if (cardsInPlay[0].rank === cardsInPlay[1].rank) {
     console.log('You found a match!')
-    // window.alert('You found a match!')
+    window.alert('You found a match!')
   } else {
     console.log('Sorry, try again.')
-    // window.alert('Sorry, try again.')
+    window.alert('Sorry, try again.')
   }
 }
 
@@ -39,10 +39,11 @@ var flipCard = function () {
   if (cardsInPlay.length >= 2) {
     return
   } else if (cardsInPlay.length === 1 && cardsInPlay[0].cardImage === this.getAttribute('src')) {
-    console.log('Cannot choose the same card twice')
+    // console.log('Cannot choose the same card twice')
+    window.setTimeout(window.alert('Cannot choose the same card twice'), 50)
     return
   }
-  this.classList.add('flipped')
+  // this.classList.add('flipped')
   // console.log('User flipped ' + cards[cardId].rank)
   // console.log(cards[cardId].cardImage)
   // console.log(cards[cardId].suit)
@@ -53,7 +54,7 @@ var flipCard = function () {
   this.setAttribute('src', cards[cardId].cardImage)
 
   if (cardsInPlay.length === 2) {
-    checkForMatch()
+    window.setTimeout(checkForMatch, 50)
   }
 }
 
