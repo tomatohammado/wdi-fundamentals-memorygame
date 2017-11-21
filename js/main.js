@@ -27,10 +27,8 @@ var cardsInPlay = []
 var checkForMatch = function () {
   if (cardsInPlay[0] === cardsInPlay[1]) {
     console.log('You found a match!')
-  } else if (cardsInPlay.length === 2) {
-    console.log('Sorry, try again.')
   } else {
-    // console.log('You need exactly two cards to compare.')
+    console.log('Sorry, try again.')
   }
 }
 
@@ -43,7 +41,11 @@ var flipCard = function () {
 
   cardsInPlay.push(cards[cardId].rank)
 
-  checkForMatch()
+  this.setAttribute('src', cards[cardId].cardImage)
+
+  if (cardsInPlay.length === 2) {
+    checkForMatch()
+  }
 }
 
 var createBoard = function () {
