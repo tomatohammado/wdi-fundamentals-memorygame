@@ -33,6 +33,7 @@ p {
   font-family: "Droid Serif", serif;
   font-size: 18px;
   line-height: 26px;
+  padding: 0 10px;
 }
 
 body {
@@ -54,7 +55,7 @@ nav {
 
 main {
   margin: 35px auto;
-  width: 850px;
+  /* width: 850px; */
   padding-bottom: 27px; /* offset height of footer when positioned fixed. 27px + the 35px margin on the images*/
 }
 
