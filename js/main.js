@@ -22,40 +22,54 @@ var cards = [
     cardImage: 'images/king-of-diamonds.png'
   }
 ]
-var cardsInPlay = []
+// var cardsInPlay = []
 
-var clearCardsInPlay = function () {
-  cardsInPlay = []
+var getFlippedCards = function () {
+  return document.querySelectorAll('.flipped')
 }
 
-var checkForMatch = function () {
-  if (cardsInPlay[0].rank === cardsInPlay[1].rank) {
+var checkForMatch = function (pairCompareList) {
+  var isCardMatch
+  console.log(pairCompareList)
+  if (pairCompareList[0].getAttribute('data-rank') === pairCompareList[1].getAttribute('data-rank')) {
     // console.log('You found a match!')
     window.alert('You found a match!')
-    clearCardsInPlay()
+    // clearCardsInPlay()
+    isCardMatch = true
   } else {
     // console.log('Sorry, try again.')
     window.alert('Sorry, try again.')
-    clearCardsInPlay()
+    // clearCardsInPlay()
+    isCardMatch = false
+  }
+  for (var i = 0; i < pairCompareList.length; i++) {
+    pairCompareList[i].classList.remove('flipped')
+    if (isCardMatch) {
+      pairCompareList[i].classList.add('matched')
+    }
   }
 }
 
 var flipCard = function () {
   var cardId = this.getAttribute('data-id')
-  if (cardsInPlay.length === 1 && cardsInPlay[0].cardImage === this.getAttribute('src')) {
+  var flippedCardNodeList = getFlippedCards()
+  // console.log('flippeCardNodeList at start: ' + flippedCardNodeList)
+  // console.log(flippedCardNodeList)
+  if (flippedCardNodeList.length === 1 && flippedCardNodeList[0].cardImage === this.getAttribute('src')) {
     // console.log('Cannot choose the same card twice')
     window.setTimeout(window.alert('Cannot choose the same card twice'), 50)
     return
   }
   this.classList.add('flipped')
-
-  // cardsInPlay.push(cards[cardId].rank)
-  cardsInPlay.push(cards[cardId])
-
   this.setAttribute('src', cards[cardId].cardImage)
 
-  if (cardsInPlay.length === 2) {
-    window.setTimeout(checkForMatch, 50)
+  flippedCardNodeList = getFlippedCards()
+  // console.log('flippeCardNodeList at end: ' + flippedCardNodeList)
+  // console.log(flippedCardNodeList)
+  if (flippedCardNodeList.length === 2) {
+    window.setTimeout(function () {
+      checkForMatch(flippedCardNodeList)
+    }, 50)
   }
 }
 
@@ -64,6 +78,7 @@ var createBoard = function () {
     var cardElement = document.createElement('img')
     cardElement.setAttribute('src', 'images/back.png')
     cardElement.setAttribute('data-id', i)
+    cardElement.setAttribute('data-rank', cards[i].rank)
 
     // console.log('i:' + i)
     // console.log('#data-id: ' + cardElement.getAttribute('data-id'))
@@ -92,7 +107,6 @@ document.querySelector('.reset-button').addEventListener('click', function () {
     document.querySelector('.card-container').removeChild(document.querySelector('.card-container img'))
   }
   createBoard()
-  cardsInPlay = []
 })
 
 createBoard()
