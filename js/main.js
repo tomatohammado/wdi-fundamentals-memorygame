@@ -114,6 +114,7 @@ var flipCard = function () {
 }
 
 var createBoard = function () {
+  cards = shuffle(cards)
   for (var i = 0; i < cards.length; i++) {
     var cardElement = document.createElement('img')
     cardElement.classList.add('card')
