@@ -55,7 +55,7 @@ var flipCard = function () {
   var flippedCardNodeList = getFlippedCards()
   // console.log('flippeCardNodeList at start: ' + flippedCardNodeList)
   // console.log(flippedCardNodeList)
-  if (flippedCardNodeList.length === 1 && flippedCardNodeList[0].cardImage === this.getAttribute('src')) {
+  if (flippedCardNodeList.length === 1 && flippedCardNodeList[0].getAttribute('src') === this.getAttribute('src')) {
     // console.log('Cannot choose the same card twice')
     window.setTimeout(window.alert('Cannot choose the same card twice'), 50)
     return
