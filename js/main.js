@@ -48,6 +48,10 @@ var checkForMatch = function (pairCompareList) {
       pairCompareList[i].setAttribute('src', 'images/back-alpha-fix.png')
     }
   }
+  if (isCardMatch) {
+    scoreValue += 1
+    document.querySelector('.score-value').textContent = scoreValue
+  }
 }
 
 var flipCard = function () {
