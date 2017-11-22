@@ -61,6 +61,7 @@ main {
 
 img {
   margin: 8px;
+  border-radius: 9px;
 }
 
 footer {
@@ -124,6 +125,9 @@ a:hover {
   color: #FFF;
 }
 
+.flipped {
+  box-shadow: 0 0 2em #FF3E03;
+}
 .matched {
   opacity: .4;
 }
