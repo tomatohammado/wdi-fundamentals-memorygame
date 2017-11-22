@@ -81,13 +81,13 @@ var createBoard = function () {
 
     // document.getElementById('game-board').appendChild(cardElement)
     // document.getElementById('game-board').insertBefore(cardElement, document.querySelector('.reset-button'))
-    document.getElementById('game-board').insertBefore(cardElement, document.querySelector('#game-board div'))
+    document.querySelector('.game-board').insertBefore(cardElement, document.querySelector('.game-board section'))
   }
 }
 
 document.querySelector('.reset-button').addEventListener('click', function () {
   for (var i = 0; i < 4; i++) {
-    document.getElementById('game-board').removeChild(document.querySelector('#game-board img'))
+    document.querySelector('.game-board').removeChild(document.querySelector('.game-board img'))
   }
   createBoard()
   cardsInPlay = []

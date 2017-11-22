@@ -1,8 +1,19 @@
 * {
   box-sizing: border-box;
 }
-  h1 {
-  /* color: #0D2C40; */
+
+body {
+  text-align: center;
+  margin: 0;
+}
+
+header {
+  background-color: #F15B31;
+  color: #FFFFFF;
+  padding: 30px 20px;
+}
+
+h1 {
   font-family: "Raleway", sans-serif;
   font-size: 45px;
   font-weight: 400;
@@ -36,17 +47,6 @@ p {
   padding: 0 10px;
 }
 
-body {
-  text-align: center;
-  margin: 0;
-}
-
-header {
-  background-color: #F15B31;
-  color: #FFFFFF;
-  padding: 30px 20px;
-}
-
 nav {
   background-color: #00A6B3;
   color: #FFFFFF;
@@ -56,7 +56,7 @@ nav {
 main {
   margin: 35px auto;
   /* width: 850px; */
-  padding-bottom: 27px; /* offset height of footer when positioned fixed. 27px + the 35px margin on the images*/
+  padding-bottom: 27px; /* offset height of footer when positioned fixed. 27px + the 35px margin on the images. Might need to change the value as I add elements */
 }
 
 img {
@@ -109,7 +109,7 @@ a:hover {
   outline:2px solid #FFFFFF;
 }
 
-.game {
+.game-board {
   margin: 40px 0;
 }
 
