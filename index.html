@@ -7,7 +7,7 @@
   
   <title>Memory Card Game</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Raleway:400,500,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Raleway:400,500,600,700|Josefin+Slab" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
@@ -22,13 +22,22 @@
   </nav>
 
   <main>
-    <h2 id="instructions">Instructions</h2>
-    <p>Concentration, also known as Match Match, Memory, Pelmanism, Shinkei-suijaku, Pexeso or simply Pairs, is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards.</p>
+    <section class="instructions-container">
+      <h2 class="instructions-header">Instructions</h2>
+      <p>Concentration, also known as Match Match, Memory, Pelmanism, Shinkei-suijaku, Pexeso or simply Pairs, is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards.</p>
+    </section>
+
+    <section class="score-container">
+        <h2 class="score-header">Score:&nbsp;</h2><span class="score-value"></span>&nbsp;/&nbsp;<span class="score-goal"></span>
+    </section>
 
     <div class="game-board">
       <!-- Cards will be placed here by createBoard() in JS -->
       <section class="card-container"></section>
-      <section><span class="reset-button">Reset Game</span></section>
+
+      <section class="reset-button-container">
+        <span class="reset-button">Reset Game</span>
+      </section>
     </div>
   </main> 
 

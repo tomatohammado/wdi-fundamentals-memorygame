@@ -111,7 +111,7 @@ a:hover {
 }
 
 .game-board {
-  margin: 40px 0;
+  margin: 10px 0;
 }
 
 .reset-button {
@@ -132,3 +132,21 @@ a:hover {
 .matched {
   opacity: .4;
 }
+
+.score-container {
+  font-family: 'Josefin Slab', serif;
+  font-size: 17px;
+}
+
+.score-header {
+  display: inline-block;
+  font-family: "Ralway", sans-serif;
+}
+
+.score-value {
+  font-size: 20px;
+}
+.score-goal {
+  font-size: 18px;
+}
+

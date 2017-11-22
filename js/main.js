@@ -22,7 +22,8 @@ var cards = [
     cardImage: 'images/king-of-diamonds-alpha-fix.png'
   }
 ]
-// var cardsInPlay = []
+
+var scoreValue, scoreGoal
 
 var getselectedCards = function () {
   return document.querySelectorAll('.selected')
@@ -102,6 +103,10 @@ var createBoard = function () {
     // document.querySelector('.game-board').insertBefore(cardElement, document.querySelector('.game-board section'))
     document.querySelector('.card-container').appendChild(cardElement)
   }
+  scoreValue = 0
+  scoreGoal = 2
+  document.querySelector('.score-value').textContent = scoreValue
+  document.querySelector('.score-goal').textContent = scoreGoal
 }
 
 document.querySelector('.reset-button').addEventListener('click', function () {
