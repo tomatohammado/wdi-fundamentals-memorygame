@@ -4,22 +4,22 @@ var cards = [
   {
     rank: 'queen',
     suit: 'hearts',
-    cardImage: 'images/queen-of-hearts.png'
+    cardImage: 'images/queen-of-hearts-alpha-fix.png'
   },
   {
     rank: 'queen',
     suit: 'diamonds',
-    cardImage: 'images/queen-of-diamonds.png'
+    cardImage: 'images/queen-of-diamonds-alpha-fix.png'
   },
   {
     rank: 'king',
     suit: 'hearts',
-    cardImage: 'images/king-of-hearts.png'
+    cardImage: 'images/king-of-hearts-alpha-fix.png'
   },
   {
     rank: 'king',
     suit: 'diamonds',
-    cardImage: 'images/king-of-diamonds.png'
+    cardImage: 'images/king-of-diamonds-alpha-fix.png'
   }
 ]
 // var cardsInPlay = []
@@ -76,7 +76,7 @@ var flipCard = function () {
 var createBoard = function () {
   for (var i = 0; i < cards.length; i++) {
     var cardElement = document.createElement('img')
-    cardElement.setAttribute('src', 'images/back.png')
+    cardElement.setAttribute('src', 'images/back-alpha-fix.png')
     cardElement.setAttribute('data-id', i)
     cardElement.setAttribute('data-rank', cards[i].rank)
 
