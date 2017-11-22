@@ -24,6 +24,10 @@ var cards = [
 ]
 var cardsInPlay = []
 
+var clearCardsInPlay = function () {
+  cardsInPlay = []
+}
+
 var checkForMatch = function () {
   if (cardsInPlay[0].rank === cardsInPlay[1].rank) {
     // console.log('You found a match!')
@@ -43,10 +47,7 @@ var flipCard = function () {
     window.setTimeout(window.alert('Cannot choose the same card twice'), 50)
     return
   }
-  // this.classList.add('flipped')
-  // console.log('User flipped ' + cards[cardId].rank)
-  // console.log(cards[cardId].cardImage)
-  // console.log(cards[cardId].suit)
+  this.classList.add('flipped')
 
   // cardsInPlay.push(cards[cardId].rank)
   cardsInPlay.push(cards[cardId])
@@ -84,10 +85,6 @@ var createBoard = function () {
     // document.querySelector('.game-board').insertBefore(cardElement, document.querySelector('.game-board section'))
     document.querySelector('.card-container').appendChild(cardElement)
   }
-}
-
-var clearCardsInPlay = function () {
-  cardsInPlay = []
 }
 
 document.querySelector('.reset-button').addEventListener('click', function () {
