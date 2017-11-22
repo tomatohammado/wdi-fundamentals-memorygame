@@ -25,7 +25,7 @@ var cards = [
 
 var scoreValue, scoreGoal
 
-var getselectedCards = function () {
+var getSelectedCards = function () {
   return document.querySelectorAll('.selected')
 }
 
@@ -56,7 +56,7 @@ var checkForMatch = function (pairCompareList) {
 
 var flipCard = function () {
   var cardId = this.getAttribute('data-id')
-  var selectedCardNodeList = getselectedCards()
+  var selectedCardNodeList = getSelectedCards()
   // console.log('flippeCardNodeList at start: ' + selectedCardNodeList)
   // console.log(selectedCardNodeList)
   if (this.classList.contains('matched')) {
@@ -70,7 +70,7 @@ var flipCard = function () {
   this.classList.add('selected')
   this.setAttribute('src', cards[cardId].cardImage)
 
-  selectedCardNodeList = getselectedCards()
+  selectedCardNodeList = getSelectedCards()
   // console.log('flippeCardNodeList at end: ' + selectedCardNodeList)
   // console.log(selectedCardNodeList)
   if (selectedCardNodeList.length === 2) {
