@@ -26,19 +26,19 @@ var cardsInPlay = []
 
 var checkForMatch = function () {
   if (cardsInPlay[0].rank === cardsInPlay[1].rank) {
-    console.log('You found a match!')
+    // console.log('You found a match!')
     window.alert('You found a match!')
+    clearCardsInPlay()
   } else {
-    console.log('Sorry, try again.')
+    // console.log('Sorry, try again.')
     window.alert('Sorry, try again.')
+    clearCardsInPlay()
   }
 }
 
 var flipCard = function () {
   var cardId = this.getAttribute('data-id')
-  if (cardsInPlay.length >= 2) {
-    return
-  } else if (cardsInPlay.length === 1 && cardsInPlay[0].cardImage === this.getAttribute('src')) {
+  if (cardsInPlay.length === 1 && cardsInPlay[0].cardImage === this.getAttribute('src')) {
     // console.log('Cannot choose the same card twice')
     window.setTimeout(window.alert('Cannot choose the same card twice'), 50)
     return
@@ -81,19 +81,21 @@ var createBoard = function () {
 
     // document.getElementById('game-board').appendChild(cardElement)
     // document.getElementById('game-board').insertBefore(cardElement, document.querySelector('.reset-button'))
-    document.querySelector('.game-board').insertBefore(cardElement, document.querySelector('.game-board section'))
+    // document.querySelector('.game-board').insertBefore(cardElement, document.querySelector('.game-board section'))
+    document.querySelector('.card-container').appendChild(cardElement)
   }
+}
+
+var clearCardsInPlay = function () {
+  cardsInPlay = []
 }
 
 document.querySelector('.reset-button').addEventListener('click', function () {
   for (var i = 0; i < 4; i++) {
-    document.querySelector('.game-board').removeChild(document.querySelector('.game-board img'))
+    document.querySelector('.card-container').removeChild(document.querySelector('.card-container img'))
   }
   createBoard()
   cardsInPlay = []
 })
-
-// flipCard(0)
-// flipCard(2)
 
 createBoard()
