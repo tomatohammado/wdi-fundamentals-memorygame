@@ -125,7 +125,7 @@ a:hover {
   color: #FFF;
 }
 
-.flipped {
+.selected {
   box-shadow: 0 0 2em #FF3E03;
   background-color: #00ABB6;
 }

@@ -24,51 +24,53 @@ var cards = [
 ]
 // var cardsInPlay = []
 
-var getFlippedCards = function () {
-  return document.querySelectorAll('.flipped')
+var getselectedCards = function () {
+  return document.querySelectorAll('.selected')
 }
 
 var checkForMatch = function (pairCompareList) {
   var isCardMatch
-  console.log(pairCompareList)
   if (pairCompareList[0].getAttribute('data-rank') === pairCompareList[1].getAttribute('data-rank')) {
     // console.log('You found a match!')
     window.alert('You found a match!')
-    // clearCardsInPlay()
     isCardMatch = true
   } else {
     // console.log('Sorry, try again.')
     window.alert('Sorry, try again.')
-    // clearCardsInPlay()
     isCardMatch = false
   }
   for (var i = 0; i < pairCompareList.length; i++) {
-    pairCompareList[i].classList.remove('flipped')
+    pairCompareList[i].classList.remove('selected')
     if (isCardMatch) {
       pairCompareList[i].classList.add('matched')
+    } else {
+      pairCompareList[i].setAttribute('src', 'images/back-alpha-fix.png')
     }
   }
 }
 
 var flipCard = function () {
   var cardId = this.getAttribute('data-id')
-  var flippedCardNodeList = getFlippedCards()
-  // console.log('flippeCardNodeList at start: ' + flippedCardNodeList)
-  // console.log(flippedCardNodeList)
-  if (flippedCardNodeList.length === 1 && flippedCardNodeList[0].getAttribute('src') === this.getAttribute('src')) {
+  var selectedCardNodeList = getselectedCards()
+  // console.log('flippeCardNodeList at start: ' + selectedCardNodeList)
+  // console.log(selectedCardNodeList)
+  if (this.classList.contains('matched')) {
+    window.setTimeout(window.alert('Cannot choose a matched card'), 50)
+    return
+  } else if (selectedCardNodeList.length === 1 && selectedCardNodeList[0].getAttribute('src') === this.getAttribute('src')) {
     // console.log('Cannot choose the same card twice')
     window.setTimeout(window.alert('Cannot choose the same card twice'), 50)
     return
   }
-  this.classList.add('flipped')
+  this.classList.add('selected')
   this.setAttribute('src', cards[cardId].cardImage)
 
-  flippedCardNodeList = getFlippedCards()
-  // console.log('flippeCardNodeList at end: ' + flippedCardNodeList)
-  // console.log(flippedCardNodeList)
-  if (flippedCardNodeList.length === 2) {
+  selectedCardNodeList = getselectedCards()
+  // console.log('flippeCardNodeList at end: ' + selectedCardNodeList)
+  // console.log(selectedCardNodeList)
+  if (selectedCardNodeList.length === 2) {
     window.setTimeout(function () {
-      checkForMatch(flippedCardNodeList)
+      checkForMatch(selectedCardNodeList)
     }, 50)
   }
 }
