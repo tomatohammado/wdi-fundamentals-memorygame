@@ -11,6 +11,7 @@ header {
   background-color: #F15B31;
   color: #FFFFFF;
   padding: 30px 20px;
+  opacity: .9;
 }
 
 h1 {
@@ -56,10 +57,10 @@ nav {
 main {
   margin: 35px auto;
   /* width: 850px; */
-  padding-bottom: 27px; /* offset height of footer when positioned fixed. 27px + the 35px margin on the images. Might need to change the value as I add elements */
+  padding-bottom: 30px;
 }
 
-img {
+.card {
   margin: 8px;
   border-radius: 5px;
 }
@@ -83,11 +84,11 @@ footer p {
   font-family: "Raleway", sans-serif;
 }
 
-.copyright {
+.credit-copyright {
   float: left;
 }
 
-.message {
+.credit-message {
   float: right;
 }
 
@@ -100,7 +101,7 @@ footer p {
   visibility: none;
 }
 
-.name {
+.credit-name {
   color: #F15B31;
   font-weight: 700;
 }
