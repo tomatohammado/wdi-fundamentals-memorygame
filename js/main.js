@@ -46,13 +46,23 @@ var shuffle = function (arr) {
   return arr
 }
 
-var getSelectedCards = function () {
+var getSelectedNodeList = function () {
   return document.querySelectorAll('.selected')
+}
+
+var getSelectedCards = function () {
+  var selectedNodeList = getSelectedNodeList()
+  var selectedCardArray = []
+  for (var i = 0; i < selectedNodeList.length; i++) {
+    var selectedCardIndex = selectedNodeList[i].getAttribute('data-id')
+    selectedCardArray.push(cards[selectedCardIndex])
+  }
+  return selectedCardArray
 }
 
 var checkForMatch = function (pairCompareList) {
   var isCardMatch
-  if (pairCompareList[0].getAttribute('data-rank') === pairCompareList[1].getAttribute('data-rank')) {
+  if (pairCompareList[0].rank === pairCompareList[1].rank) {
     // console.log('You found a match!')
     window.alert('You found a match!')
     isCardMatch = true
@@ -61,12 +71,13 @@ var checkForMatch = function (pairCompareList) {
     window.alert('Sorry, try again.')
     isCardMatch = false
   }
+  var selectedNodeList = getSelectedNodeList()
   for (var i = 0; i < pairCompareList.length; i++) {
-    pairCompareList[i].classList.remove('selected')
+    selectedNodeList[i].classList.remove('selected')
     if (isCardMatch) {
-      pairCompareList[i].classList.add('matched')
+      selectedNodeList[i].classList.add('matched')
     } else {
-      pairCompareList[i].setAttribute('src', 'images/back-alpha-fix.png')
+      selectedNodeList[i].setAttribute('src', 'images/back-alpha-fix.png')
     }
   }
   if (isCardMatch) {
@@ -88,6 +99,7 @@ var flipCard = function () {
     window.setTimeout(window.alert('Cannot choose the same card twice'), 50)
     return
   }
+
   this.classList.add('selected')
   this.setAttribute('src', cards[cardId].cardImage)
 
@@ -107,7 +119,7 @@ var createBoard = function () {
     cardElement.classList.add('card')
     cardElement.setAttribute('src', 'images/back-alpha-fix.png')
     cardElement.setAttribute('data-id', i)
-    cardElement.setAttribute('data-rank', cards[i].rank)
+    // cardElement.setAttribute('data-rank', cards[i].rank)
     // cardElement.setAttribute('data-tier', cards[i].tier)
 
     // console.log('i:' + i)
