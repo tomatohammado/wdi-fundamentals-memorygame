@@ -136,7 +136,8 @@ var createBoard = function () {
 }
 
 document.querySelector('.reset-button').addEventListener('click', function () {
-  for (var i = 0; i < 4; i++) {
+  var numberOfCards = document.querySelectorAll('.card').length
+  for (var i = 0; i < numberOfCards; i++) {
     document.querySelector('.card-container').removeChild(document.querySelector('.card'))
   }
   createBoard()
