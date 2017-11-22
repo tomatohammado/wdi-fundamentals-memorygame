@@ -83,7 +83,7 @@ var flipCard = function () {
   if (this.classList.contains('matched')) {
     window.setTimeout(window.alert('Cannot choose a matched card'), 50)
     return
-  } else if (selectedCardNodeList.length === 1 && selectedCardNodeList[0].getAttribute('src') === this.getAttribute('src')) {
+  } else if (this.classList.contains('selected')) {
     // console.log('Cannot choose the same card twice')
     window.setTimeout(window.alert('Cannot choose the same card twice'), 50)
     return
@@ -108,6 +108,7 @@ var createBoard = function () {
     cardElement.setAttribute('src', 'images/back-alpha-fix.png')
     cardElement.setAttribute('data-id', i)
     cardElement.setAttribute('data-rank', cards[i].rank)
+    // cardElement.setAttribute('data-tier', cards[i].tier)
 
     // console.log('i:' + i)
     // console.log('#data-id: ' + cardElement.getAttribute('data-id'))
