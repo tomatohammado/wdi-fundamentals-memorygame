@@ -83,6 +83,7 @@ var flipCard = function () {
 var createBoard = function () {
   for (var i = 0; i < cards.length; i++) {
     var cardElement = document.createElement('img')
+    cardElement.classList.add('card')
     cardElement.setAttribute('src', 'images/back-alpha-fix.png')
     cardElement.setAttribute('data-id', i)
     cardElement.setAttribute('data-rank', cards[i].rank)
