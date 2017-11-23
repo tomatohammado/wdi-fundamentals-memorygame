@@ -63,16 +63,15 @@ var getSelectedCards = function () {
 var checkForMatch = function (pairCompareList) {
   var isCardMatch
   if (pairCompareList[0].rank === pairCompareList[1].rank) {
-    // console.log('You found a match!')
     window.alert('You found a match!')
     isCardMatch = true
   } else {
-    // console.log('Sorry, try again.')
     window.alert('Sorry, try again.')
     isCardMatch = false
   }
+
   var selectedNodeList = getSelectedNodeList()
-  for (var i = 0; i < pairCompareList.length; i++) {
+  for (var i = 0; i < selectedNodeList.length; i++) {
     selectedNodeList[i].classList.remove('card-selected')
     if (isCardMatch) {
       selectedNodeList[i].classList.add('card-matched')
@@ -81,6 +80,7 @@ var checkForMatch = function (pairCompareList) {
       selectedNodeList[i].setAttribute('src', 'images/back-alpha-fix.png')
     }
   }
+
   if (isCardMatch) {
     scoreValue += 1
     document.querySelector('.score-value').textContent = scoreValue
@@ -90,13 +90,11 @@ var checkForMatch = function (pairCompareList) {
 var flipCard = function () {
   var cardId = this.getAttribute('data-id')
   var selectedCardNodeList = getSelectedCards()
-  // console.log('flippeCardNodeList at start: ' + selectedCardNodeList)
-  // console.log(selectedCardNodeList)
+
   if (this.classList.contains('card-matched')) {
     window.setTimeout(window.alert('Cannot choose a matched card'), 50)
     return
   } else if (this.classList.contains('card-selected')) {
-    // console.log('Cannot choose the same card twice')
     window.setTimeout(window.alert('Cannot choose the same card twice'), 50)
     return
   }
@@ -104,14 +102,13 @@ var flipCard = function () {
   this.classList.remove('card-back')
   this.classList.add('card-selected')
   this.setAttribute('src', cards[cardId].cardImage)
-
   selectedCardNodeList = getSelectedCards()
-  // console.log('flippeCardNodeList at end: ' + selectedCardNodeList)
-  // console.log(selectedCardNodeList)
+
   if (selectedCardNodeList.length === 2) {
     window.setTimeout(function () {
       checkForMatch(selectedCardNodeList)
     }, 50)
+    /* for some reason, I have to use call checkForMatch() in an anonymous function for it to display the second card before displaying the alert. I can't follow the syntax in line 90 for example */
   }
 }
 
@@ -122,22 +119,6 @@ var createBoard = function () {
     cardElement.classList.add('card', 'card-back')
     cardElement.setAttribute('src', 'images/back-alpha-fix.png')
     cardElement.setAttribute('data-id', i)
-    // cardElement.setAttribute('data-rank', cards[i].rank)
-    // cardElement.setAttribute('data-tier', cards[i].tier)
-
-    // console.log('i:' + i)
-    // console.log('#data-id: ' + cardElement.getAttribute('data-id'))
-
-    // cardElement.addEventListener('click', function () {
-      // console.log('i:' + i)
-      // console.log('#data-id: ' + cardElement.getAttribute('data-id'))
-      // console.log('this#data-id: ' + this.getAttribute('data-id'))
-      // flipCard(i)
-
-      // thank god for stackoverflow https://stackoverflow.com/questions/256754/how-to-pass-arguments-to-addeventlistener-listener-function.
-      // flipCard(this.getAttribute('data-id'))
-    // })
-
     cardElement.addEventListener('click', flipCard)
 
     // document.getElementById('game-board').appendChild(cardElement)
@@ -151,6 +132,10 @@ var createBoard = function () {
   document.querySelector('.score-goal').textContent = scoreGoal
 }
 
+/* EVENT LISTENERS */
+// ==============================================
+
+/* Reset-Button Event Listener */
 document.querySelector('.reset-button').addEventListener('click', function () {
   var numberOfCards = document.querySelectorAll('.card').length
   for (var i = 0; i < numberOfCards; i++) {
@@ -159,4 +144,5 @@ document.querySelector('.reset-button').addEventListener('click', function () {
   createBoard()
 })
 
+/* A little hacky, but call the createBoard() function when the script finishes loading. I would prefer $(document).ready() or something */
 createBoard()
