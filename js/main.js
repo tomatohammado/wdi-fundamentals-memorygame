@@ -132,17 +132,32 @@ var createBoard = function () {
   document.querySelector('.score-goal').textContent = scoreGoal
 }
 
-/* EVENT LISTENERS */
+/* EVENT LISTENER Fuctions */
 // ==============================================
 
-/* Reset-Button Event Listener */
-document.querySelector('.reset-button').addEventListener('click', function () {
-  var numberOfCards = document.querySelectorAll('.card').length
-  for (var i = 0; i < numberOfCards; i++) {
-    document.querySelector('.cards-container').removeChild(document.querySelector('.card'))
+/* Reset Button Event Listener */
+var setResetButtonListener = function () {
+  document.querySelector('.reset-button').addEventListener('click', function () {
+    var numberOfCards = document.querySelectorAll('.card').length
+    for (var i = 0; i < numberOfCards; i++) {
+      document.querySelector('.cards-container').removeChild(document.querySelector('.card'))
+    }
+    createBoard()
+  })
+}
+
+/* Difficulty Button Event Listener */
+var setDifficultyButtonListenter = function () {
+  var difficultyButtonNodeList = document.querySelectorAll('.difficulty-button')
+  var numberOfDifficultyButtons = difficultyButtonNodeList.length
+  for (var i = 0; i < numberOfDifficultyButtons; i++) {
+    difficultyButtonNodeList[i].addEventListener('click', function () {
+      console.log('numberOfDifficultyButtons: ' + numberOfDifficultyButtons)
+    })
   }
-  createBoard()
-})
+}
 
 /* A little hacky, but call the createBoard() function when the script finishes loading. I would prefer $(document).ready() or something */
+setDifficultyButtonListenter()
+setResetButtonListener()
 createBoard()
