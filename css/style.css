@@ -117,7 +117,8 @@ a:hover {
 
 .reset-button {
   display: inline-block;
-  background-color: rgba(255, 62, 3, .75);
+  background-color: #F15B31;
+  opacity: .8;
   border-radius: 6px;
   padding: 10px;
   font-family: "Ralway", sans-serif;
@@ -151,3 +152,34 @@ a:hover {
   font-size: 18px;
 }
 
+.difficulty-container {
+  padding: 10px 0;
+}
+
+.difficulty-button {
+  display: inline-block;
+  /* border: 2px solid #555; */
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0 5px;
+  background-color: #F15B31;
+  color: #FFF;
+  opacity: .4;
+  font-family: "Ralway", sans-serif;
+}
+.difficulty-easy {
+  filter: hue-rotate(0deg);
+}
+
+.difficulty-normal {
+  filter: hue-rotate(120deg);
+}
+
+.difficulty-hard {
+  filter: hue-rotate(240deg);
+}
+
+.difficulty-active {
+  transform: scale(1.2);
+  opacity: 1;
+}
