@@ -30,7 +30,6 @@ h2 {
 }
 
 a {
-  /* color: #F15B31; */
   color: #FFFFFF;
   font-family: "Raleway", sans-serif;
   font-size: 18px;
@@ -112,7 +111,7 @@ a:hover {
 .reset-button {
   display: inline-block;
   background-color: #F15B31;
-  opacity: .8;
+  opacity: .9;
   border-radius: 6px;
   padding: 10px;
   font-family: "Ralway", sans-serif;
@@ -162,7 +161,6 @@ a:hover {
 
 .difficulty-button {
   display: inline-block;
-  /* border: 2px solid #555; */
   border-radius: 5px;
   padding: 5px 10px;
   margin: 0 5px;
