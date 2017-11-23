@@ -60,6 +60,17 @@ var getSelectedCards = function () {
   return selectedCardArray
 }
 
+var getResetButtonNode = function () {
+  return document.querySelector('.reset-button')
+}
+
+var resetBoard = function () {
+  var numberOfCards = document.querySelectorAll('.card').length
+  for (var i = 0; i < numberOfCards; i++) {
+    document.querySelector('.cards-container').removeChild(document.querySelector('.card'))
+  }
+}
+
 var checkForMatch = function (pairCompareList) {
   var isCardMatch
   if (pairCompareList[0].rank === pairCompareList[1].rank) {
@@ -137,11 +148,9 @@ var createBoard = function () {
 
 /* Reset Button Event Listener */
 var setResetButtonListener = function () {
-  document.querySelector('.reset-button').addEventListener('click', function () {
-    var numberOfCards = document.querySelectorAll('.card').length
-    for (var i = 0; i < numberOfCards; i++) {
-      document.querySelector('.cards-container').removeChild(document.querySelector('.card'))
-    }
+  var resetButtonNode = getResetButtonNode()
+  resetButtonNode.addEventListener('click', function () {
+    resetBoard()
     createBoard()
   })
 }
@@ -155,10 +164,28 @@ var setDifficultyButtonListenter = function () {
       if (this.classList.contains('difficulty-active')) {
         console.log('Please choose a new difficulty')
       } else {
+        var oldDifficultyLevel = document.querySelector('.difficulty-active').getAttribute('data-difficulty')
         document.querySelector('.difficulty-active').classList.remove('difficulty-active')
         this.classList.add('difficulty-active')
-        var difficultyLevel = this.getAttribute('data-difficulty')
-        console.log('new difficulty level: ' + difficultyLevel)
+        var newDifficultyLevel = this.getAttribute('data-difficulty')
+        var resetButtonNode = getResetButtonNode()
+        resetButtonNode.classList.remove('difficulty-' + oldDifficultyLevel)
+        switch (newDifficultyLevel) {
+          case 'easy':
+            resetButtonNode.classList.add('difficulty-' + newDifficultyLevel)
+            break
+          case 'normal':
+            resetButtonNode.classList.add('difficulty-' + newDifficultyLevel)
+            break
+          case 'hard':
+            resetButtonNode.classList.add('difficulty-' + newDifficultyLevel)
+            break
+          /* the default case shouldn't ever run, but just in case */
+          default:
+            console.log('invalid difficulty level')
+        }
+        resetBoard()
+        createBoard()
       }
     })
   }
