@@ -47,7 +47,7 @@ var shuffle = function (arr) {
 }
 
 var getSelectedNodeList = function () {
-  return document.querySelectorAll('.selected')
+  return document.querySelectorAll('.card-selected')
 }
 
 var getSelectedCards = function () {
@@ -73,10 +73,11 @@ var checkForMatch = function (pairCompareList) {
   }
   var selectedNodeList = getSelectedNodeList()
   for (var i = 0; i < pairCompareList.length; i++) {
-    selectedNodeList[i].classList.remove('selected')
+    selectedNodeList[i].classList.remove('card-selected')
     if (isCardMatch) {
-      selectedNodeList[i].classList.add('matched')
+      selectedNodeList[i].classList.add('card-matched')
     } else {
+      selectedNodeList[i].classList.add('card-back')
       selectedNodeList[i].setAttribute('src', 'images/back-alpha-fix.png')
     }
   }
@@ -91,16 +92,17 @@ var flipCard = function () {
   var selectedCardNodeList = getSelectedCards()
   // console.log('flippeCardNodeList at start: ' + selectedCardNodeList)
   // console.log(selectedCardNodeList)
-  if (this.classList.contains('matched')) {
+  if (this.classList.contains('card-matched')) {
     window.setTimeout(window.alert('Cannot choose a matched card'), 50)
     return
-  } else if (this.classList.contains('selected')) {
+  } else if (this.classList.contains('card-selected')) {
     // console.log('Cannot choose the same card twice')
     window.setTimeout(window.alert('Cannot choose the same card twice'), 50)
     return
   }
 
-  this.classList.add('selected')
+  this.classList.remove('card-back')
+  this.classList.add('card-selected')
   this.setAttribute('src', cards[cardId].cardImage)
 
   selectedCardNodeList = getSelectedCards()
@@ -117,7 +119,7 @@ var createBoard = function () {
   cards = shuffle(cards)
   for (var i = 0; i < cards.length; i++) {
     var cardElement = document.createElement('img')
-    cardElement.classList.add('card')
+    cardElement.classList.add('card', 'card-back')
     cardElement.setAttribute('src', 'images/back-alpha-fix.png')
     cardElement.setAttribute('data-id', i)
     // cardElement.setAttribute('data-rank', cards[i].rank)
@@ -141,7 +143,7 @@ var createBoard = function () {
     // document.getElementById('game-board').appendChild(cardElement)
     // document.getElementById('game-board').insertBefore(cardElement, document.querySelector('.reset-button'))
     // document.querySelector('.game-board').insertBefore(cardElement, document.querySelector('.game-board section'))
-    document.querySelector('.card-container').appendChild(cardElement)
+    document.querySelector('.cards-container').appendChild(cardElement)
   }
   scoreValue = 0
   scoreGoal = 2
@@ -152,7 +154,7 @@ var createBoard = function () {
 document.querySelector('.reset-button').addEventListener('click', function () {
   var numberOfCards = document.querySelectorAll('.card').length
   for (var i = 0; i < numberOfCards; i++) {
-    document.querySelector('.card-container').removeChild(document.querySelector('.card'))
+    document.querySelector('.cards-container').removeChild(document.querySelector('.card'))
   }
   createBoard()
 })
