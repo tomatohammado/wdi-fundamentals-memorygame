@@ -1,5 +1,6 @@
 console.log('Up and running!')
 
+var scoreValue, scoreGoal
 var cards = [
   {
     rank: 'queen',
@@ -22,8 +23,6 @@ var cards = [
     cardImage: 'images/king-of-diamonds-alpha-fix.png'
   }
 ]
-
-var scoreValue, scoreGoal
 
 /* how to shuffle an array, Knuth Shuffle, via https://stackoverflow.com/a/2450976 */
 var shuffle = function (arr) {
@@ -71,31 +70,24 @@ var resetBoard = function () {
   }
 }
 
-var checkForMatch = function (pairCompareList) {
-  var isCardMatch
-  if (pairCompareList[0].rank === pairCompareList[1].rank) {
-    window.alert('You found a match!')
-    isCardMatch = true
-  } else {
-    window.alert('Sorry, try again.')
-    isCardMatch = false
-  }
+var createBoard = function () {
+  cards = shuffle(cards)
+  for (var i = 0; i < cards.length; i++) {
+    var cardElement = document.createElement('img')
+    cardElement.classList.add('card', 'card-back')
+    cardElement.setAttribute('src', 'images/back-alpha-fix.png')
+    cardElement.setAttribute('data-id', i)
+    cardElement.addEventListener('click', flipCard)
 
-  var selectedNodeList = getSelectedNodeList()
-  for (var i = 0; i < selectedNodeList.length; i++) {
-    selectedNodeList[i].classList.remove('card-selected')
-    if (isCardMatch) {
-      selectedNodeList[i].classList.add('card-matched')
-    } else {
-      selectedNodeList[i].classList.add('card-back')
-      selectedNodeList[i].setAttribute('src', 'images/back-alpha-fix.png')
-    }
+    // document.getElementById('game-board').appendChild(cardElement)
+    // document.getElementById('game-board').insertBefore(cardElement, document.querySelector('.reset-button'))
+    // document.querySelector('.game-board').insertBefore(cardElement, document.querySelector('.game-board section'))
+    document.querySelector('.cards-container').appendChild(cardElement)
   }
-
-  if (isCardMatch) {
-    scoreValue += 1
-    document.querySelector('.score-value').textContent = scoreValue
-  }
+  scoreValue = 0
+  scoreGoal = 2
+  document.querySelector('.score-value').textContent = scoreValue
+  document.querySelector('.score-goal').textContent = scoreGoal
 }
 
 var flipCard = function () {
@@ -123,24 +115,31 @@ var flipCard = function () {
   }
 }
 
-var createBoard = function () {
-  cards = shuffle(cards)
-  for (var i = 0; i < cards.length; i++) {
-    var cardElement = document.createElement('img')
-    cardElement.classList.add('card', 'card-back')
-    cardElement.setAttribute('src', 'images/back-alpha-fix.png')
-    cardElement.setAttribute('data-id', i)
-    cardElement.addEventListener('click', flipCard)
-
-    // document.getElementById('game-board').appendChild(cardElement)
-    // document.getElementById('game-board').insertBefore(cardElement, document.querySelector('.reset-button'))
-    // document.querySelector('.game-board').insertBefore(cardElement, document.querySelector('.game-board section'))
-    document.querySelector('.cards-container').appendChild(cardElement)
+var checkForMatch = function (pairCompareList) {
+  var isCardMatch
+  if (pairCompareList[0].rank === pairCompareList[1].rank) {
+    window.alert('You found a match!')
+    isCardMatch = true
+  } else {
+    window.alert('Sorry, try again.')
+    isCardMatch = false
   }
-  scoreValue = 0
-  scoreGoal = 2
-  document.querySelector('.score-value').textContent = scoreValue
-  document.querySelector('.score-goal').textContent = scoreGoal
+
+  var selectedNodeList = getSelectedNodeList()
+  for (var i = 0; i < selectedNodeList.length; i++) {
+    selectedNodeList[i].classList.remove('card-selected')
+    if (isCardMatch) {
+      selectedNodeList[i].classList.add('card-matched')
+    } else {
+      selectedNodeList[i].classList.add('card-back')
+      selectedNodeList[i].setAttribute('src', 'images/back-alpha-fix.png')
+    }
+  }
+
+  if (isCardMatch) {
+    scoreValue += 1
+    document.querySelector('.score-value').textContent = scoreValue
+  }
 }
 
 /* EVENT LISTENER Fuctions */
