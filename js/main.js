@@ -24,8 +24,67 @@ var cards = [
   }
 ]
 
-var createCards = function () {
+var createCardDeck = function () {
   var difficultyLevel = getDifficultyLevel()
+  var deck = []
+  var cardTier = 0
+  var deckSize
+  switch (difficultyLevel) {
+    case 'easy':
+      deckSize = 4
+      break
+    case 'normal':
+      deckSize = 8
+      break
+    case 'hard':
+      deckSize = 12
+      break
+    default:
+      console.log('not a valid tier level')
+  }
+  console.log('card tier:' + cardTier)
+  console.log('deck size: ' + deckSize)
+
+  for (var i = 0; i < deckSize; i++) {
+    var card = {}
+    console.log('iteration #' + (i + 1) + ': i % 4 = ' + (i % 4))
+    switch (i % 4) {
+      case 0:
+        cardTier++
+        card.rank = 'queen'
+        card.suit = 'hearts'
+        card.cardImage = 'images/queen-of-hearts-alpha-fix.png'
+        card.tier = cardTier
+        deck.push(card)
+        break
+      case 1:
+        card.rank = 'queen'
+        card.suit = 'diamonds'
+        card.cardImage = 'images/queen-of-diamonds-alpha-fix.png'
+        card.tier = cardTier
+        deck.push(card)
+        break
+      case 2:
+        card.rank = 'king'
+        card.suit = 'hearts'
+        card.cardImage = 'images/king-of-hearts-alpha-fix.png'
+        card.tier = cardTier
+        deck.push(card)
+        break
+      case 3:
+        card.rank = 'king'
+        card.suit = 'diamonds'
+        card.cardImage = 'images/king-of-diamonds-alpha-fix.png'
+        card.tier = cardTier
+        deck.push(card)
+        break
+      default:
+        console.log('something went wrong making card #' + (i + 1))
+    }
+  }
+
+  console.log(deck)
+  return deck
 }
 
 /* how to shuffle an array, Knuth Shuffle, via https://stackoverflow.com/a/2450976 */
