@@ -24,6 +24,10 @@ var cards = [
   }
 ]
 
+var createCards = function () {
+  var difficultyLevel = getDifficultyLevel()
+}
+
 /* how to shuffle an array, Knuth Shuffle, via https://stackoverflow.com/a/2450976 */
 var shuffle = function (arr) {
   var currentIndex = arr.length
@@ -43,6 +47,10 @@ var shuffle = function (arr) {
   }
 
   return arr
+}
+
+var getDifficultyLevel = function () {
+  return document.querySelector('.difficulty-active').getAttribute('data-difficulty')
 }
 
 var getSelectedNodeList = function () {
@@ -163,10 +171,10 @@ var setDifficultyButtonListenter = function () {
       if (this.classList.contains('difficulty-active')) {
         console.log('Please choose a new difficulty')
       } else {
-        var oldDifficultyLevel = document.querySelector('.difficulty-active').getAttribute('data-difficulty')
+        var oldDifficultyLevel = getDifficultyLevel()
         document.querySelector('.difficulty-active').classList.remove('difficulty-active')
         this.classList.add('difficulty-active')
-        var newDifficultyLevel = this.getAttribute('data-difficulty')
+        var newDifficultyLevel = getDifficultyLevel()
         var resetButtonNode = getResetButtonNode()
         resetButtonNode.classList.remove('difficulty-' + oldDifficultyLevel)
         switch (newDifficultyLevel) {
