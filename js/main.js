@@ -152,7 +152,14 @@ var setDifficultyButtonListenter = function () {
   var numberOfDifficultyButtons = difficultyButtonNodeList.length
   for (var i = 0; i < numberOfDifficultyButtons; i++) {
     difficultyButtonNodeList[i].addEventListener('click', function () {
-      console.log('numberOfDifficultyButtons: ' + numberOfDifficultyButtons)
+      if (this.classList.contains('difficulty-active')) {
+        console.log('Please choose a new difficulty')
+      } else {
+        document.querySelector('.difficulty-active').classList.remove('difficulty-active')
+        this.classList.add('difficulty-active')
+        var difficultyLevel = this.getAttribute('data-difficulty')
+        console.log('new difficulty level: ' + difficultyLevel)
+      }
     })
   }
 }
