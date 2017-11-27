@@ -170,15 +170,18 @@ a:hover {
   font-family: "Ralway", sans-serif;
 }
 .difficulty-easy {
-  filter: hue-rotate(0deg);
+  /* filter: hue-rotate(0deg); */
+  filter: hue-rotate(120deg)
 }
 
 .difficulty-normal {
-  filter: hue-rotate(120deg);
+  /* filter: hue-rotate(120deg); */
+  filter: hue-rotate(0deg)
 }
 
 .difficulty-hard {
-  filter: hue-rotate(240deg);
+  /* filter: hue-rotate(240deg); */
+  filter: hue-rotate(-120deg)
 }
 
 .difficulty-active {
