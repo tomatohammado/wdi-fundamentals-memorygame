@@ -1,28 +1,29 @@
 console.log('Up and running!')
 
 var scoreValue, scoreGoal
-var cards = [
-  {
-    rank: 'queen',
-    suit: 'hearts',
-    cardImage: 'images/queen-of-hearts-alpha-fix.png'
-  },
-  {
-    rank: 'queen',
-    suit: 'diamonds',
-    cardImage: 'images/queen-of-diamonds-alpha-fix.png'
-  },
-  {
-    rank: 'king',
-    suit: 'hearts',
-    cardImage: 'images/king-of-hearts-alpha-fix.png'
-  },
-  {
-    rank: 'king',
-    suit: 'diamonds',
-    cardImage: 'images/king-of-diamonds-alpha-fix.png'
-  }
-]
+var cardDeck
+// var cards = [
+//   {
+//     rank: 'queen',
+//     suit: 'hearts',
+//     cardImage: 'images/queen-of-hearts-alpha-fix.png'
+//   },
+//   {
+//     rank: 'queen',
+//     suit: 'diamonds',
+//     cardImage: 'images/queen-of-diamonds-alpha-fix.png'
+//   },
+//   {
+//     rank: 'king',
+//     suit: 'hearts',
+//     cardImage: 'images/king-of-hearts-alpha-fix.png'
+//   },
+//   {
+//     rank: 'king',
+//     suit: 'diamonds',
+//     cardImage: 'images/king-of-diamonds-alpha-fix.png'
+//   }
+// ]
 
 var createCardDeck = function () {
   var difficultyLevel = getDifficultyLevel()
@@ -32,12 +33,15 @@ var createCardDeck = function () {
   switch (difficultyLevel) {
     case 'easy':
       deckSize = 4
+      scoreGoal = 2
       break
     case 'normal':
       deckSize = 8
+      scoreGoal = 4
       break
     case 'hard':
       deckSize = 12
+      scoreGoal = 6
       break
     default:
       console.log('not a valid tier level')
@@ -54,28 +58,28 @@ var createCardDeck = function () {
         card.rank = 'queen'
         card.suit = 'hearts'
         card.cardImage = 'images/queen-of-hearts-alpha-fix.png'
-        card.tier = cardTier
+        card.cardTier = cardTier
         deck.push(card)
         break
       case 1:
         card.rank = 'queen'
         card.suit = 'diamonds'
         card.cardImage = 'images/queen-of-diamonds-alpha-fix.png'
-        card.tier = cardTier
+        card.cardTier = cardTier
         deck.push(card)
         break
       case 2:
         card.rank = 'king'
         card.suit = 'hearts'
         card.cardImage = 'images/king-of-hearts-alpha-fix.png'
-        card.tier = cardTier
+        card.cardTier = cardTier
         deck.push(card)
         break
       case 3:
         card.rank = 'king'
         card.suit = 'diamonds'
         card.cardImage = 'images/king-of-diamonds-alpha-fix.png'
-        card.tier = cardTier
+        card.cardTier = cardTier
         deck.push(card)
         break
       default:
@@ -121,7 +125,7 @@ var getSelectedCards = function () {
   var selectedCardArray = []
   for (var i = 0; i < selectedNodeList.length; i++) {
     var selectedCardIndex = selectedNodeList[i].getAttribute('data-id')
-    selectedCardArray.push(cards[selectedCardIndex])
+    selectedCardArray.push(cardDeck[selectedCardIndex])
   }
   return selectedCardArray
 }
@@ -138,8 +142,10 @@ var resetBoard = function () {
 }
 
 var createBoard = function () {
-  cards = shuffle(cards)
-  for (var i = 0; i < cards.length; i++) {
+  cardDeck = createCardDeck()
+
+  cardDeck = shuffle(cardDeck)
+  for (var i = 0; i < cardDeck.length; i++) {
     var cardElement = document.createElement('img')
     cardElement.classList.add('card', 'card-back')
     cardElement.setAttribute('src', 'images/back-alpha-fix.png')
@@ -152,7 +158,7 @@ var createBoard = function () {
     document.querySelector('.cards-container').appendChild(cardElement)
   }
   scoreValue = 0
-  scoreGoal = 2
+  // scoreGoal = 2
   document.querySelector('.score-value').textContent = scoreValue
   document.querySelector('.score-goal').textContent = scoreGoal
 }
@@ -171,7 +177,7 @@ var flipCard = function () {
 
   this.classList.remove('card-back')
   this.classList.add('card-selected')
-  this.setAttribute('src', cards[cardId].cardImage)
+  this.setAttribute('src', cardDeck[cardId].cardImage)
   selectedCardNodeList = getSelectedCards()
 
   if (selectedCardNodeList.length === 2) {
@@ -184,7 +190,7 @@ var flipCard = function () {
 
 var checkForMatch = function (pairCompareList) {
   var isCardMatch
-  if (pairCompareList[0].rank === pairCompareList[1].rank) {
+  if (pairCompareList[0].rank === pairCompareList[1].rank && pairCompareList[0].cardTier === pairCompareList[1].cardTier) {
     window.alert('You found a match!')
     isCardMatch = true
   } else {
