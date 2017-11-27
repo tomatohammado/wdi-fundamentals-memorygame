@@ -133,9 +133,34 @@ a:hover {
   box-shadow: 0 0 2em #FF3E03;
   background-color: #00ABB6;
 }
+
+.card-tier-1 {
+  filter: hue-rotate(0deg)
+}
+
+.card-tier-2 {
+  filter: hue-rotate(120deg)
+}
+
+.card-tier-3 {
+  filter: hue-rotate(-120deg)
+}
+
 .card-matched {
-  opacity: .7;
-  filter: blur(2px);
+  opacity: .6;
+  /* filter: blur(2px); */
+}
+
+.card-matched .card-tier-1 {
+  filter: blur(2px) hue-rotate(0deg)
+}
+
+.card-matched .card-tier-2 {
+  filter: blur(2px) hue-rotate(120deg)
+}
+
+.card-matched .card-tier-3 {
+  filter: blur(2px) hue-rotate(-120deg)
 }
 
 .score-container {
