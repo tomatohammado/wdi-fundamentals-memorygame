@@ -177,6 +177,7 @@ var flipCard = function () {
 
   this.classList.remove('card-back')
   this.classList.add('card-selected')
+  this.classList.add('card-tier-' + cardDeck[cardId].cardTier)
   this.setAttribute('src', cardDeck[cardId].cardImage)
   selectedCardNodeList = getSelectedCards()
 
@@ -204,6 +205,7 @@ var checkForMatch = function (pairCompareList) {
     if (isCardMatch) {
       selectedNodeList[i].classList.add('card-matched')
     } else {
+      selectedNodeList[i].classList.remove('card-tier-' + cardDeck[selectedNodeList[i].getAttribute('data-id')].cardTier)
       selectedNodeList[i].classList.add('card-back')
       selectedNodeList[i].setAttribute('src', 'images/back-alpha-fix.png')
     }
