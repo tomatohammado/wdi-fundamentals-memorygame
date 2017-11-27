@@ -120,6 +120,17 @@ a:hover {
   color: #FFF;
 }
 
+.cards-container {
+  max-width: 764px;
+  margin: 0 auto;
+}
+
+@media (max-width: 763px) {
+  .cards-container {
+    max-width: 382px;
+  }
+}
+
 .card {
   margin: 8px;
   border-radius: 5px;
